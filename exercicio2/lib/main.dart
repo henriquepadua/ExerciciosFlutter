@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:exercicio1/Cadastro.dart';
 
 void main() => runApp(HomePage());
 
@@ -9,10 +11,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Login',
+        initialRoute: "/",
+        routes: {
+          '/cadastro': (context) => Cadastro(),
+        },
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Login'),),
         drawer: const Drawer(),
+
         bottomNavigationBar: BottomNavigationBar(
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
@@ -71,17 +78,20 @@ class HomePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                    TextButton(
-                    child: const Text(
+                    FilledButton(
+                    child: Text(
                     'Cadastrar',
                     style: TextStyle(fontSize: 20),
                     ),
-                    onPressed: () => {}
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/cadastro");
+                    }
+                        //signup screen
                     )
 
                     ]),
                 ],
-              ),
+              ), 
             )
         ),
       ),
