@@ -56,6 +56,7 @@ class HomePage extends StatelessWidget {
                   ),
                   Divider(),
                   Container(
+<<<<<<< HEAD
                       padding: const EdgeInsets.fromLTRB(50, 0, 50, 25),
                       child: ElevatedButton(
                           child: const Text('Login', textAlign: TextAlign.center),
@@ -79,6 +80,20 @@ class HomePage extends StatelessWidget {
                     onPressed: () => {}
                     )
                     ]),
+=======
+                  padding: const EdgeInsets.fromLTRB(50, 0, 50, 25),
+                  child: ElevatedButton(
+                  child: const Text('Login', textAlign: TextAlign.center),
+                    onPressed: () => {}
+                  )
+                  ),
+                  const Text(
+                      'Primeiro acesso?',
+                      //style: TextStyle(color: Colors.white, fontSize: 20),
+                      //textAlign: TextAlign.center
+                  ),
+
+>>>>>>> abf1cadbe71e653584f546f9acbb9c0594075f85
                 ],
               ),
             )
