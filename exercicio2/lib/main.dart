@@ -2,20 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:exercicio1/Cadastro.dart';
 
-void main() => runApp(HomePage());
+void main() => runApp(
+MaterialApp(
+home:
+HomePage(),
+title: 'Login',
+initialRoute: "/",
+routes: {
+'/cadastro': (context) => Cadastro(),
+},));
+
+
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Login',
-        initialRoute: "/",
-        routes: {
-          '/cadastro': (context) => Cadastro(),
-        },
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: const Text('Login'),),
         drawer: const Drawer(),
@@ -84,16 +88,16 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(fontSize: 20),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, "/cadastro");
+                      Navigator.of(context).pushNamed(
+                       "/cadastro");
                     }
                         //signup screen
                     )
 
                     ]),
                 ],
-              ), 
-            )
-        ),
+              ),
+            ),
       ),
     );
   }
