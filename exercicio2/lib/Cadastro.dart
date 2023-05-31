@@ -17,27 +17,10 @@ class _CadastroState extends State<Cadastro> {
   final idade = TextEditingController();
   final senha = TextEditingController();
   final confirmarsenha = TextEditingController();
-  final endereco = TextEditingController();
-  final cpf = TextEditingController();
-  final peso = TextEditingController();
-  final substancias = TextEditingController();
+  final telefone = TextEditingController();
   bool elegivel = false;
   bool _isCheckedF = false;
   bool _isCheckedM = true;
-
-  String? tipossangue =
-      "A+"; // Variável para armazenar o tipo de sangue selecionado
-
-  List<String> tiposSangue = [
-    'A+',
-    'A-',
-    'B+',
-    'B-',
-    'AB+',
-    'AB-',
-    'O+',
-    'O-',
-  ]; // Lista de tipos de sangue
 
   TextField padrao(TextEditingController controlador, String templateField) {
     return TextField(
@@ -48,10 +31,10 @@ class _CadastroState extends State<Cadastro> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "Registro Doador",
+        title: "Cadastrar",
         home: Scaffold(
           appBar: AppBar(
-            title: Text("Tela registro doador"),
+            title: Text("Tela Cadastro"),
           ),
           body:
           SingleChildScrollView(
@@ -169,15 +152,15 @@ class _CadastroState extends State<Cadastro> {
                 //Campo para registrar a idade
                 margin: const EdgeInsets.fromLTRB(50, 0, 50, 25),
                 child: TextField(
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.datetime,
                   inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
+                    //FilteringTextInputFormatter.,
                   ],
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(10.0),
-                    labelText: "Idade",
+                    labelText: "Data de Nascimento",
                   ),
-                  maxLength: 3,
+                  maxLength: 11,
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
@@ -186,74 +169,26 @@ class _CadastroState extends State<Cadastro> {
                 ),
               ),
               Container(
-                //Campo para registrar o CPF
+                //Campo para registrar o telefone
                 margin: const EdgeInsets.fromLTRB(50, 0, 50, 25),
                 child: TextField(
                   keyboardType: TextInputType.number,
                   inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    CpfInputFormatter(), // Classe de formatação personalizada para o CPF
+                    //FilteringTextInputFormatter.digitsOnly,
+                    //CpfInputFormatter(), // Classe de formatação personalizada para o CPF
                   ],
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(10.0),
-                    labelText: "CPF",
+                    labelText: "Telefone",
                   ),
-                  maxLength: 14,
+                  maxLength: 15,
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
                   ),
-                  controller: cpf,
+                  controller: telefone,
                 ),
               ),
-              Container(
-                //Campo para registrar o peso
-                margin: const EdgeInsets.fromLTRB(50, 0, 50, 25),
-                child: TextField(
-                  keyboardType: TextInputType.numberWithOptions(decimal: true),
-                  inputFormatters: [WeightInputFormatter()],
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(10.0),
-                    labelText: "Peso (kg)",
-                  ),
-                  maxLength: 6,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  controller: peso,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(55, 10, 50, 25),
-                    child: Text(
-                      'Tipo sanguíneo',
-                      style: TextStyle(fontSize: 16.0),
-                    ),
-                  ),
-                  DropdownButton<String>(
-                    value: tipossangue,
-                    hint: Text('Selecione'),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        tipossangue = newValue;
-                      });
-                    },
-                    items: tiposSangue.map((String value) {
-                      return DropdownMenuItem<String>(
-                        alignment: Alignment.center,
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ],
-              ),
-              DefaultTextFields.getTextField(
-                  'Utiliza alguma substância ilicita?', substancias),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -283,11 +218,7 @@ class _CadastroState extends State<Cadastro> {
                           sexo: sexo.text,
                           idade: idade.text,
                           senha: senha.text,
-                          endereco: endereco.text,
-                          cpf: cpf.text,
-                          peso: peso.text,
-                          tipoSangue: tipossangue!,
-                          substancias: substancias.text,
+                          telefone: telefone.text,
                         );
                        // saveUserDonatorData(donatorData, context);
                       },

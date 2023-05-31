@@ -8,11 +8,7 @@ class DonatorData {
   final String sexo;
   final String idade;
   final String senha;
-  final String endereco;
-  final String cpf;
-  final String peso;
-  final String tipoSangue;
-  final String substancias;
+  final String telefone;
 
   DonatorData({
     required this.email,
@@ -20,10 +16,6 @@ class DonatorData {
     required this.sexo,
     required this.idade,
     required this.senha,
-    required this.endereco,
-    required this.cpf,
-    required this.peso,
-    required this.tipoSangue,
-    required this.substancias,
+    required this.telefone
   });
 }
