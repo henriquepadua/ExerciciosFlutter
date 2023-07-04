@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:exercicio1/Cadastro.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(
 MaterialApp(
@@ -13,7 +14,33 @@ routes: {
 },));
 
 
+_incrementCounter() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  int counter = (prefs.getInt('counter') ?? 0) +1;
+  print('Pressed $counter times');
+  await prefs.setInt('counter',counter);
+}
 
+_salvarDados() async{
+  //String valorDigitado = _textController.text;
+  final prefs = await SharedPreferences.getInstance();
+  //await prefs.setString("Email",valorDigitado);
+  //print("Operação salvar: $valorDigitado");
+}
+
+_recuperarDados() async {
+  final prefs = await SharedPreferences.getInstance();
+  /*setState((){
+    _textoSalvo = prefs.getString("email") ?? "Sem valor";
+  });
+  print("Operação recupera: $_textoSalvo");*/
+}
+
+_removerDados() async{
+  final prefs = await SharedPreferences.getInstance();
+  prefs.remove("email");
+  print("Operação remover");
+}
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -70,7 +97,7 @@ class HomePage extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(50, 0, 50, 25),
                       child: ElevatedButton(
                           child: const Text('Login', textAlign: TextAlign.center),
-                          onPressed: () => {}
+                          onPressed: _incrementCounter
                       )
                   ),
                   const Text(
